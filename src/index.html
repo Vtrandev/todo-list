@@ -8,12 +8,18 @@
 <body>
     <header>
         <nav>
-            <button>Home</button>
-            <button>Menu</button>
+            <form action="https://httpbin.org/post" method="post">
+                <label for="item">To Do Item</label>
+                <input type="text" id="item" name="item">
+
+                <button class="btn__add">Click to add</button>
+            </form>
+            <button class="btn__new">New To-Do</button>
             <button>About</button>
         </nav>
 
     </header>
     <div class="content"></div>
+
 </body>
 </html>

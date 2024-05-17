@@ -2,19 +2,37 @@ import "./style.css";
 import Icon from "./image.jpg";
 import Header from "./Components/header";
 
-function component() {
-  // Lodash, currently included via a script, is required for this line to work
-  const element = document.createElement("div");
-  element.innerHTML = "Hello Webpack"
-  element.classList.add("hello");
+const toDoList = {}
 
-  const myIcon = new Image();
-  myIcon.classList.add("image")
-  myIcon.src = Icon;
+const btn = document.querySelector(".btn__add");
+const btnNew = document.querySelector(".btn__new");
 
-  element.appendChild(myIcon);
-  Header();
-  return element
+btn.addEventListener("click", (e) => component(e))
+btnNew.addEventListener("click", () => createToDo())
+
+function createToDo(e) {
+  const list = new ToDo("New", "This is a description", "Tomorrow", "Low", "Notes are here")
+
+  console.log(list)
 }
 
-document.body.appendChild(component());
+function component(e) {
+  e.preventDefault();
+  let id = Math.floor(Math.random()*10)
+  const value = e.target.form[0].value
+  toDoList.id = {id, value}
+
+  console.log(toDoList);
+}
+
+function ToDo(title, description, dueDate, priority, notes) {
+  // this.title = title;
+  // this.description = description;
+  // this.dueDate = dueDate;
+  // this.priority = priority;
+  // this.notes = notes;
+  return { title, description, dueDate, priority, notes }
+}
+
+
+// document.body.appendChild(component());
